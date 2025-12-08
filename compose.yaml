@@ -4,7 +4,7 @@ services:
     build: .
 
     ports:
-      - 127.0.0.1:8501:8501
+      - 8501:8501
 
     develop:
       # Create a `watch` configuration to update the app
