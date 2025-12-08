@@ -10,7 +10,7 @@ with col1:
     lat = st.slider("Latitude", -90, 90, 30)
 
 with col2:
-    result = insel.block("SUM", lon, lat)
+    result = insel.template("Last_PV_Batterie.vseit", x=lon, y=lat)
     st.write(f"{lon} + {lat} = {result}")
 
 
