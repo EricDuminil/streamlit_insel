@@ -12,10 +12,10 @@ st.title("INSEL online")
 col1, col2 = st.columns([1, 1])
 with col1:
     st.title("Bezug  💥👽👽👽👽👽 ")
-    verbrauch = st.slider("🔌 Verbrauch [MWh/a]", 0, 50, 10)
-    pvleistung = st.slider("🌞 PV Leistung [kWp]", 0, 50, 10)
-    wirkungsgrad = st.slider("🔋 Batteriewirkungsgrad [%]", 0, 100, 95)
-    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet [kWh]", 0, 50, 5)
+    verbrauch = st.slider("🔌 Verbrauch", 0, 50, 10, format="%g MWh / a")
+    pvleistung = st.slider("🌞 PV Leistung", 0, 50, 10, format="%g kWp")
+    wirkungsgrad = st.slider("🦾 Batteriewirkungsgrad", 0, 100, 95, format="%g %%")
+    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 50, 5, format="%g kWh")
 
 with col2:
     eigenverbrauchsquote, autarkiequote = insel.template(
