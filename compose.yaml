@@ -6,6 +6,8 @@ services:
     ports:
       - 127.0.0.1:8501:8501
 
+    restart: unless-stopped
+
     develop:
       # Create a `watch` configuration to update the app
       # https://docs.docker.com/compose/file-watch/#compose-watch-versus-bind-mounts
