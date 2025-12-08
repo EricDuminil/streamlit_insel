@@ -4,6 +4,11 @@ import streamlit as st
 st.set_page_config(layout="wide")
 st.title("INSEL online")
 
+# TODO: Change title
+# TODO: Change app name
+# TODO: Results as table?
+# TODO: Fix battery efficiency?
+
 col1, col2 = st.columns([1, 1])
 with col1:
     st.title("Bezug  💥👽👽👽👽👽 ")
