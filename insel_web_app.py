@@ -36,7 +36,6 @@ with col2:
         text=f"🏝️ Autarkiequote = {autarkiequote*100:.0f} %",
     )
     st.subheader("Bezug")
+    # NOTE: Could add a random id, for multi-users
     st.image("/tmp/Last_PV_Batterie.png")
 
-
-# insel.template('sunorb.vseit', Longitude=lon, Latitude=lat, Timezone=timezone)
