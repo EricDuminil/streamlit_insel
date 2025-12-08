@@ -6,15 +6,16 @@ st.markdown(
     "<h1 style='text-align: center'>PV + Last + Batterie</h1>", unsafe_allow_html=True
 )
 
-col1, col2 = st.columns([2, 3])
-with col1:
+left, right = st.columns([2, 3])
+
+with left:
     st.header("Inputs")
     verbrauch = st.slider("🔌 Verbrauch", 1, 50, 10, format="%g MWh / a")
     pvleistung = st.slider("🌞 PV Leistung", 1, 50, 10, format="%g kWp")
     wirkungsgrad = st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%")
     kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 50, 5, format="%g kWh")
 
-with col2:
+with right:
     st.header("Ergebnisse")
     eigenverbrauchsquote, autarkiequote = insel.template(
         "Last_PV_Batterie.vseit",
