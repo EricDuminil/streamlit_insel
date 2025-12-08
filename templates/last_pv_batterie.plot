@@ -139,7 +139,7 @@ if (cb_format ne "") set format cb cb_format
 
 set pm3d
 set palette rgb 34,35,36
-set palette negative
+# set palette negative
 unset surface
 if (show_grid) set grid xtics ytics mxtics mytics
 if (show_colorbox)\
