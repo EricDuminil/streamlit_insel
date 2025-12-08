@@ -15,8 +15,8 @@ y_format = "%g:00" # Can be empty, but needs to be a string
 
 y_min    = "-0.5" # Can be empty, but needs to be a string
 y_max    = "23.5" # Can be empty, but needs to be a string
-y_tics   = "" # Can be empty, but needs to be a string
-my_tics  = "" # Can be empty, but needs to be a string
+y_tics   = "6" # Can be empty, but needs to be a string
+my_tics  = "2" # Can be empty, but needs to be a string
 
 chosen_terminal = 1 # 0 for window output, 1 for png, 2 for pdf, 3 for svg, 4 for txt, 5 for tex, 6 for eps
 window_output = (chosen_terminal == 0)
