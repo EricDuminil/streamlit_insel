@@ -2,7 +2,9 @@ import insel
 import streamlit as st
 
 st.set_page_config(layout="wide", page_title="PV + Last + Batterie")
-st.markdown("<h1 style='text-align: center'>PV + Last + Batterie</h1>", unsafe_allow_html=True)
+st.markdown(
+    "<h1 style='text-align: center'>PV + Last + Batterie</h1>", unsafe_allow_html=True
+)
 # TODO: Results as table?
 # TODO: Fix battery efficiency?
 
@@ -24,8 +26,16 @@ with col2:
         Wirkungsgrad_Batterie=wirkungsgrad / 100,
     )
 
-    st.write(f" Eigenverbrauchsquote = {round(eigenverbrauchsquote*100)} %")
-    st.write(f" Autarkiequote 🗾 = {round(autarkiequote*100)} %")
+    autarkiequote = max(autarkiequote, 0)
+
+    st.progress(
+        eigenverbrauchsquote,
+        text=f"Eigenverbrauchsquote = {eigenverbrauchsquote*100:.0f} %",
+    )
+    st.progress(
+        autarkiequote,
+        text=f"Autarkiequote = {autarkiequote*100:.0f} %",
+    )
     st.subheader("Bezug")
     st.image("/tmp/Last_PV_Batterie.png")
 
