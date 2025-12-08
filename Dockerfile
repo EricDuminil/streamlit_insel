@@ -79,4 +79,4 @@ USER nonroot
 # Use `/app` as the working directory
 WORKDIR /app
 
-CMD ["streamlit", "run", "main.py"]
+CMD ["streamlit", "run", "insel_web_app.py"]
