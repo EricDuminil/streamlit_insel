@@ -5,7 +5,6 @@ st.set_page_config(layout="wide", page_title="PV + Last + Batterie")
 st.markdown(
     "<h1 style='text-align: center'>PV + Last + Batterie</h1>", unsafe_allow_html=True
 )
-# TODO: Fix battery efficiency?
 
 col1, col2 = st.columns([2, 3])
 with col1:
@@ -38,4 +37,3 @@ with col2:
     st.subheader("Bezug")
     # NOTE: Could add a random id, for multi-users
     st.image("/tmp/Last_PV_Batterie.png")
-
