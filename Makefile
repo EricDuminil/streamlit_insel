@@ -42,6 +42,7 @@ logs: ## Show logs
 update: ## Update images
 	@echo "${orange}Update images${no_color}"
 	git pull
+	$(MAKE) build
 
 
 green=`tput setaf 2`
