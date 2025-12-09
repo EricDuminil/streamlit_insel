@@ -25,7 +25,6 @@ with right:
         Wirkungsgrad_Batterie=wirkungsgrad / 100,
     )
 
-    autarkiequote = max(autarkiequote, 0)
     st.progress(
         eigenverbrauchsquote,
         text=f"🏠 Eigenverbrauchsquote = {eigenverbrauchsquote*100:.0f} %",
