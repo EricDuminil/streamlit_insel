@@ -45,7 +45,7 @@ FROM python:3.12-slim-bookworm
 ARG INSEL_VERSION=8.3.2.0b
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG INSEL_DEB="insel_${INSEL_VERSION}_x64.deb"
+ARG INSEL_DEB="insel_${INSEL_VERSION}_x64_mini.deb"
 ARG INSEL_URL=https://insel.eu/download/${INSEL_DEB}
 
 RUN apt-get update && \
