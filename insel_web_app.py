@@ -17,7 +17,7 @@ with left:
 
 with right:
     st.header("Ergebnisse")
-    eigenverbrauchsquote, autarkiequote = insel.template(
+    eigenverbrauchsquote, autarkiequote, cycles = insel.template(
         "Last_PV_Batterie.vseit",
         MWh_Verbrauch=verbrauch,
         kWp_PV=pvleistung,
@@ -34,6 +34,8 @@ with right:
         autarkiequote,
         text=f"🏝️ Autarkiequote = {autarkiequote*100:.0f} %",
     )
+
+    st.badge(f"{cycles:.0f} Zyklen / a")
     st.subheader("Bezug")
     # NOTE: Could add a random id, for multi-users
     st.image("/tmp/Last_PV_Batterie.png")
