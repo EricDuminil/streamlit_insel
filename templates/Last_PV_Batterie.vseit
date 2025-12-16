@@ -479,7 +479,7 @@
 <attr name="outputPortsCount"><int>1</int></attr>
 <attr name="bp1"><string>1</string></attr>
 <attr name="bp2"><string>1</string></attr>
-<attr name="sp1"><locator xlink:href="file:/app/data/H25_stuendlich.csv"/></attr>
+<attr name="sp1"><locator xlink:href="file:C:\\Users\\eric.duminil\\Desktop\\streamlit_insel\\data\\H25_stuendlich.csv"/></attr>
 <attr name="sp2"><string>*</string></attr>
 </entity>
 <entity id="_110" class="eu.insel.block.READ">
@@ -491,7 +491,7 @@
 <attr name="outputPortsCount"><int>1</int></attr>
 <attr name="bp1"><string>1</string></attr>
 <attr name="bp2"><string>1</string></attr>
-<attr name="sp1"><locator xlink:href="file:/app/data/stündlicher_PV_Ertrag_Stuttgart_10kWp.csv"/></attr>
+<attr name="sp1"><locator xlink:href="file:C:\\Users\\eric.duminil\\Desktop\streamlit_insel\\data\\stuendlicher_PV_Ertrag_Stuttgart_10kWp.csv"/></attr>
 <attr name="sp2"><string>*</string></attr>
 </entity>
 <entity id="_111" class="eu.insel.block.CUM">
@@ -889,7 +889,7 @@
 <attr name="yMin"><string>-0.5</string></attr>
 <attr name="yMax"><string>23.5</string></attr>
 <attr name="yTics"><string>6</string></attr>
-<attr name="sp1"><string>/app/templates/last_pv_batterie.plot</string></attr>
+<attr name="sp1"><string>C:\\Users\\eric.duminil\\Desktop\streamlit_insel\\templates\\last_pv_batterie.plot</string></attr>
 <attr name="mYtics"><string>2</string></attr>
 <attr name="yFormat"><string>%g:00</string></attr>
 <attr name="customGnuplotCommands"><string>## Uncommented commands will be executed before plot.
@@ -1129,14 +1129,14 @@ B 3 READ
 P 3
     1               % Number of values to be read per record
     1               % Number of records to be skipped on the first call
-    '/app/data/H25_stuendlich.csv' % File name
+    'C:\\Users\\eric.duminil\\Desktop\\streamlit_insel\\data\\H25_stuendlich.csv' % File name
     '*'             % Fortran format
 
 B 4 READ
 P 4
     1               % Number of values to be read per record
     1               % Number of records to be skipped on the first call
-    '/app/data/stündlicher_PV_Ertrag_Stuttgart_10kWp.csv' % File name
+    'C:\\Users\\eric.duminil\\Desktop\streamlit_insel\\data\\stuendlicher_PV_Ertrag_Stuttgart_10kWp.csv' % File name
     '*'             % Fortran format
 
 B 5 CUM
@@ -1298,7 +1298,7 @@ B 44 PLOTPMC
     2.4
    46.1
 P 44
-    '/app/templates/last_pv_batterie.plot' % Gnuplot file name
+    'C:\\Users\\eric.duminil\\Desktop\streamlit_insel\\templates\\last_pv_batterie.plot' % Gnuplot file name
 
 B 45 SCREEN
    33.1

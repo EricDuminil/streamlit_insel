@@ -38,4 +38,6 @@ with right:
     st.badge(f"{cycles:.0f} Zyklen / a")
     st.subheader("Bezug")
     # NOTE: Could add a random id, for multi-users
-    st.image("/tmp/Last_PV_Batterie.png")
+    import time
+    time.sleep(0.5)
+    st.image("templates/last_pv_batterie.png")

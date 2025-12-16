@@ -6,12 +6,8 @@
 
 ## Usage
 
-### Docker
+On Windows, replace every occurrence of `C:\\Users\\eric.duminil\\Desktop\\streamlit_insel` in "Last_PV_Batterie.vseit" and "last_pv_batterie.plot" (inside templates folder), with the corresponding path on your computer.
 
-Run `docker compose watch`
+Install streamlit with `pip install streamlit`
 
-### uv
-
-With Python+uv installed, run `uv run streamlit run insel_web_app.py`.
-
-(You might need to modify the absolute paths inside templates files).
+Run with `streamlit run insel_web_app.py`

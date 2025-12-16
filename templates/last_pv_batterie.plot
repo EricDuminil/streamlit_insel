@@ -27,7 +27,7 @@ txt_output = (chosen_terminal == 4)
 tex_output = (chosen_terminal == 5)
 eps_output = (chosen_terminal == 6)
 
-output_filename = '/tmp/Last_PV_Batterie.png' # Needs to be defined if chosen_terminal > 0
+output_filename = 'C:\\Users\\eric.duminil\\Desktop\streamlit_insel\\templates\\last_pv_batterie.png' # Needs to be defined if chosen_terminal > 0
 
 width = 1152 # Needs to be defined
 height = 768 # Needs to be defined
@@ -52,8 +52,8 @@ show_colorbox = 1
 show_contour = 0
 
 # PART III : Customize the plot depending on variables defined in PART I
-data_file = "~/.insel_8_3/tmp/insel.gpl"
-model_dir = "/app/templates"
+data_file = "C:/Users/eric.duminil/AppData/Roaming/INSEL_8_3/tmp/insel.gpl"
+model_dir = "C:\\Users\\eric.duminil\\Desktop\streamlit_insel\\templates\\"
 set title title
 
 set sample 1000
