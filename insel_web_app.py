@@ -25,11 +25,15 @@ with left:
         Wirkungsgrad_Batterie=wirkungsgrad / 100,
     )
 
-    source = [0,   2,  2,  1,  3,  3]
-    target = [2,   1,  3,  4,  4,  3]
-    value =  [50, 30, 20, 30, 10, 10]
+    source = [0,   0,  1  ]
+    target = [2,   3,  2 ]
+    value =  [ertrag - einspeisung, einspeisung, bezug]
     link = dict(source = source, target = target, value = value)
-    data = go.Sankey(link = link, node = dict(label= ["A", "B", "C", "D", "E"]))
+    data = go.Sankey(link = link, node = dict(label= ["PV", "Netz", "Last", "Netz"]))
+    # TODO: Add battery
+    # TODO: Check Battery 0kWh
+    # TODO: Change colors
+    # TODO: Change order?
     fig = go.Figure(data)
     st.plotly_chart(fig)
 
