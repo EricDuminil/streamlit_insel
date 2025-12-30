@@ -9,3 +9,4 @@ templates/*.png
 
 # Virtual environments
 .venv
+venv
