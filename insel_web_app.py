@@ -34,6 +34,7 @@ with left:
     # TODO: Check Battery 0kWh
     # TODO: Change colors
     # TODO: Change order?
+    # FIXME: double text? https://discuss.streamlit.io/t/ghost-double-text-bug/68765/14
     fig = go.Figure(data)
     st.plotly_chart(fig)
 
