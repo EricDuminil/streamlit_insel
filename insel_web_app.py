@@ -36,14 +36,14 @@ with left:
         link=link,
         arrangement="snap",
         node={
-            "label": ["PV", "Natz", "Last", "Netz"],
+            "label": ["PV", "Bezug", "Last", "Einspeisung"],
             "x": [0.01, 0.01, 0.99, 0.99],
             "y": [0.01, 0.99, 0.01, 0.99],
+            "color": ["orange", "gray", "blue", "gray"]
         },
     )
     # TODO: Add battery
     # TODO: Check Battery 0kWh
-    # TODO: Change colors
     # FIXME: double text? https://discuss.streamlit.io/t/ghost-double-text-bug/68765/14
     fig = go.Figure(data)
     st.plotly_chart(fig)
