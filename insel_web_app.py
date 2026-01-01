@@ -32,11 +32,18 @@ with left:
     target = [2, 3, 2]
     value = [ertrag - einspeisung, einspeisung, bezug]
     link = dict(source=source, target=target, value=value)
-    data = go.Sankey(link=link, node=dict(label=["PV", "Netz", "Last", "Netz"]))
+    data = go.Sankey(
+        link=link,
+        arrangement="snap",
+        node={
+            "label": ["PV", "Natz", "Last", "Netz"],
+            "x": [0.01, 0.01, 0.99, 0.99],
+            "y": [0.01, 0.99, 0.01, 0.99],
+        },
+    )
     # TODO: Add battery
     # TODO: Check Battery 0kWh
     # TODO: Change colors
-    # TODO: Change order?
     # FIXME: double text? https://discuss.streamlit.io/t/ghost-double-text-bug/68765/14
     fig = go.Figure(data)
     st.plotly_chart(fig)
