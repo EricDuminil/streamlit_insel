@@ -15,7 +15,9 @@ with left:
     st.header("Inputs")
     verbrauch = st.slider("🔌 Verbrauch", 1, 50, 10, format="%g MWh / a")
     pvleistung = st.slider("🌞 PV Leistung", 1, 50, 10, format="%g kWp")
-    wirkungsgrad = st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%")
+    wirkungsgrad = (
+        st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%") / 100
+    )
     kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 500, 5, format="%g kWh")
 
     (
@@ -31,7 +33,7 @@ with left:
         MWh_Verbrauch=verbrauch,
         kWp_PV=pvleistung,
         Kapazitaet_Batterie=kapazitaetbatterie,
-        Wirkungsgrad_Batterie=wirkungsgrad / 100,
+        Wirkungsgrad_Batterie=wirkungsgrad,
     )
 
     ########################
@@ -47,34 +49,58 @@ with left:
     #  Verlust:      5
     #  Einspeisung:  6
 
+    pv_to_battery = batterie_ladung
+    verlust1 = pv_to_battery * (1 - wirkungsgrad) / wirkungsgrad
+    battery_to_load = pv_to_battery * wirkungsgrad
+    verlust2 = pv_to_battery * (1 - wirkungsgrad)
+    pv_to_load = last - bezug - battery_to_load
+
     source = [
         0,
         0,
+        0,
         1,
+        0,
+        2,
+        2,
     ]
     target = [
+        4,
         2,
         3,
-        2,
+        4,
+        6,
+        4,
+        5,
     ]
     value = [
-        ertrag - einspeisung,
-        einspeisung,
+        pv_to_load,
+        pv_to_battery,
+        verlust1,
         bezug,
+        einspeisung,
+        battery_to_load,
+        verlust2,
     ]
     link = dict(source=source, target=target, value=value)
     data = go.Sankey(
         link=link,
         arrangement="snap",
         node={
-            "label": ["PV", "Bezug", "Last", "Einspeisung"],
-            "x": [0.01, 0.01, 0.99, 0.99],
-            "y": [0.01, 0.99, 0.01, 0.99],
-            "color": ["orange", "gray", "blue", "gray"],
+            "label": [
+                "PV",
+                "Bezug",
+                "Battery",
+                "Verlust",
+                "Last",
+                "Verlust",
+                "Einspeisung",
+            ],
+            "x": [0.01, 0.01, 0.5, 0.5, 0.99, 0.99, 0.99],
+            "y": [0.01, 0.99, 0.3, 0.3, 0.01, 0.01, 0.99],
+            # "color": ["orange", "gray", "blue", "gray"],
         },
     )
-    # TODO: Add battery
-    # FIXME: double text? https://discuss.streamlit.io/t/ghost-double-text-bug/68765/14
     fig = go.Figure(data)
     st.plotly_chart(fig)
 
