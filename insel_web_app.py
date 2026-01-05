@@ -16,9 +16,9 @@ with left:
     verbrauch = st.slider("🔌 Verbrauch", 1, 50, 10, format="%g MWh / a")
     pvleistung = st.slider("🌞 PV Leistung", 1, 50, 10, format="%g kWp")
     wirkungsgrad = st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%")
-    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 50, 5, format="%g kWh")
+    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 500, 5, format="%g kWh")
 
-    eigenverbrauchsquote, autarkiequote, cycles, last, ertrag, einspeisung, bezug = (
+    eigenverbrauchsquote, autarkiequote, batterie_ladung, last, ertrag, einspeisung, bezug = (
         insel.template(
             "Last_PV_Batterie.vseit",
             MWh_Verbrauch=verbrauch,
@@ -43,7 +43,6 @@ with left:
         },
     )
     # TODO: Add battery
-    # TODO: Check Battery 0kWh
     # FIXME: double text? https://discuss.streamlit.io/t/ghost-double-text-bug/68765/14
     fig = go.Figure(data)
     st.plotly_chart(fig)
@@ -64,7 +63,8 @@ with right:
         )
 
     with right2:
-        st.badge(f"{cycles:.0f} Zyklen / a")
+        if kapazitaetbatterie > 0:
+            st.badge(f"{batterie_ladung / kapazitaetbatterie:.0f} Zyklen / a")
     st.subheader("Bezug")
     # NOTE: Could add a random id, for multi-users
     st.image("/tmp/Last_PV_Batterie.png")
