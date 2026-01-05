@@ -18,19 +18,50 @@ with left:
     wirkungsgrad = st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%")
     kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 500, 5, format="%g kWh")
 
-    eigenverbrauchsquote, autarkiequote, batterie_ladung, last, ertrag, einspeisung, bezug = (
-        insel.template(
-            "Last_PV_Batterie.vseit",
-            MWh_Verbrauch=verbrauch,
-            kWp_PV=pvleistung,
-            Kapazitaet_Batterie=kapazitaetbatterie,
-            Wirkungsgrad_Batterie=wirkungsgrad / 100,
-        )
+    (
+        eigenverbrauchsquote,
+        autarkiequote,
+        batterie_ladung,
+        last,
+        ertrag,
+        einspeisung,
+        bezug,
+    ) = insel.template(
+        "Last_PV_Batterie.vseit",
+        MWh_Verbrauch=verbrauch,
+        kWp_PV=pvleistung,
+        Kapazitaet_Batterie=kapazitaetbatterie,
+        Wirkungsgrad_Batterie=wirkungsgrad / 100,
     )
 
-    source = [0, 0, 1]
-    target = [2, 3, 2]
-    value = [ertrag - einspeisung, einspeisung, bezug]
+    ########################
+    #    Sankey diagram    #
+    ########################
+
+    # Nodes:
+    #  PV:           0
+    #  Bezug:        1
+    #  Batterie:     2
+    #  Verlust:      3
+    #  Last:         4
+    #  Verlust:      5
+    #  Einspeisung:  6
+
+    source = [
+        0,
+        0,
+        1,
+    ]
+    target = [
+        2,
+        3,
+        2,
+    ]
+    value = [
+        ertrag - einspeisung,
+        einspeisung,
+        bezug,
+    ]
     link = dict(source=source, target=target, value=value)
     data = go.Sankey(
         link=link,
@@ -39,7 +70,7 @@ with left:
             "label": ["PV", "Bezug", "Last", "Einspeisung"],
             "x": [0.01, 0.01, 0.99, 0.99],
             "y": [0.01, 0.99, 0.01, 0.99],
-            "color": ["orange", "gray", "blue", "gray"]
+            "color": ["orange", "gray", "blue", "gray"],
         },
     )
     # TODO: Add battery
