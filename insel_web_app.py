@@ -18,7 +18,7 @@ with left:
     wirkungsgrad = (
         st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%") / 100
     )
-    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 50, 5, format="%g kWh")
+    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 50, 10, format="%g kWh")
 
     (
         eigenverbrauchsquote,
