@@ -18,7 +18,7 @@ with left:
     wirkungsgrad = (
         st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%") / 100
     )
-    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 50, 10, format="%g kWh")
+    kapazitaetbatterie = st.slider("🔋 Batteriekapazitaet", 0, 10000, 10, format="%g kWh")
 
     (
         eigenverbrauchsquote,
@@ -28,6 +28,7 @@ with left:
         ertrag,
         einspeisung,
         bezug,
+        batterie_entladung,
     ) = insel.template(
         "Last_PV_Batterie.vseit",
         MWh_Verbrauch=verbrauch,
@@ -51,8 +52,8 @@ with left:
 
     pv_to_battery = batterie_ladung
     verlust1 = pv_to_battery * (1 - wirkungsgrad) / wirkungsgrad
-    battery_to_load = pv_to_battery * wirkungsgrad
-    verlust2 = pv_to_battery * (1 - wirkungsgrad)
+    battery_to_load = batterie_entladung * wirkungsgrad
+    verlust2 = batterie_entladung * (1 - wirkungsgrad)
     pv_to_load = last - bezug - battery_to_load
 
     source = [
