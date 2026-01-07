@@ -21,7 +21,7 @@ with left:
     kapazitaetbatterie = st.select_slider(
         "🔋 Batteriekapazitaet",
         options=[1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000],
-        value= 10,
+        value=10,
         format_func=lambda x: f"{x:g} kWh",
     )
 
@@ -104,7 +104,15 @@ with left:
             ],
             "x": [0.01, 0.01, 0.5, 0.5, 0.99, 0.99, 0.99],
             "y": [0.01, 0.99, 0.3, 0.3, 0.01, 0.01, 0.99],
-            # "color": ["orange", "gray", "blue", "gray"],
+            "color": [
+                "#FFD700",  # PV (Yellow/Gold)
+                "#808080",  # Bezug/Grid Import (Grey)
+                "#2ECC71",  # Battery (Green)
+                "#E74C3C",  # Verlust/Loss 1 (Red)
+                "#3498DB",  # Last/Load (Blue)
+                "#E74C3C",  # Verlust/Loss 2 (Red)
+                "#F39C12",  # Einspeisung/Feed-in (Orange/Amber)
+            ],
         },
     )
     fig = go.Figure(data)
