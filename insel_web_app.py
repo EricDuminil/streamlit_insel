@@ -19,8 +19,8 @@ with left:
         st.slider("🦾 Batteriewirkungsgrad", 1, 100, 95, format="%g %%") / 100
     )
     kapazitaetbatterie = st.select_slider(
-        "🔋 Batteriekapazitaet",
-        options=[1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000],
+        "🔋 Batteriekapazität",
+        options=[0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000],
         value=10,
         format_func=lambda x: f"{x:g} kWh",
     )
