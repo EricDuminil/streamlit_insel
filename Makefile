@@ -25,7 +25,7 @@ down:   ## Stop containers and discard them.
 
 shell: ## Start shell.
 	@echo "${green}Start shell interactive console${no_color}"
-	docker compose run --rm web bash
+	docker compose run --rm streamlit bash
 
 status: ## Show current status.
 	@docker compose ps --all | \
