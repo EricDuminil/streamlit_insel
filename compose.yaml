@@ -4,9 +4,6 @@ services:
     # Build the image from the Dockerfile in the current directory
     build: .
 
-    # ports:
-    #   - 127.0.0.1:8501:8501
-
     restart: unless-stopped
 
     develop:
@@ -26,10 +23,36 @@ services:
         - action: rebuild
           path: ./uv.lock
 
-    networks:
-      - proxy-network
 
-networks:
-  proxy-network:
-    name: reverse_proxy
-    external: true
+################################################################################
+#                              Access the web app                              #
+################################################################################
+
+# NOTE: In order to access the web-app, please create a compose.override.yaml file.
+
+########################
+#    Shared network    #
+########################
+
+# For a reverse proxy, in an external network, which can access the app at http://insel-streamlit:8501:
+
+# services:
+#   streamlit:
+#     networks:
+#       - proxy-network
+#
+# networks:
+#   proxy-network:
+#     name: reverse_proxy
+#     external: true
+
+########################
+#     Port binding     #
+########################
+
+# The app will be available at http://localhost:8501
+#
+# services:
+#   streamlit:
+#     ports:
+#       - 127.0.0.1:8501:8501
