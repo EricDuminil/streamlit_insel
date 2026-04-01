@@ -1,5 +1,3 @@
-## From https://raw.githubusercontent.com/astral-sh/uv-docker-example/refs/heads/main/multistage.Dockerfile
-
 ################################################################################
 #                 Multi stage docker, for Streamlit INSEL App                  #
 ################################################################################
@@ -8,27 +6,14 @@
 #                         Stage 1 : UV + dependencies                          #
 ################################################################################
 
-# An example using multi-stage image builds to create a final image without uv.
-
-# First, build the application in the `/app` directory.
-# See `Dockerfile` for details.
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
-ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
-
-# Disable Python downloads, because we want to use the system interpreter
-# across both images. If using a managed Python version, it needs to be
-# copied from the build image into the final image; see `standalone.Dockerfile`
-# for an example.
-ENV UV_PYTHON_DOWNLOADS=0
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_PYTHON_DOWNLOADS=0
 
 WORKDIR /app
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project --no-dev
+COPY pyproject.toml uv.lock ./
+RUN uv sync --locked --no-install-project --no-dev
 COPY . /app
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --locked --no-dev
+RUN uv sync --locked --no-dev
 
 ################################################################################
 #                                 INSEL + App                                  #
@@ -42,7 +27,7 @@ FROM python:3.12-slim-bookworm
 ########################
 #  INSEL, without GUI  #
 ########################
-ARG INSEL_VERSION=8.3.2.0b
+ARG INSEL_VERSION=8.3.3.1b
 ARG DEBIAN_FRONTEND=noninteractive
 
 ARG INSEL_DEB="insel_${INSEL_VERSION}_x64_mini.deb"
