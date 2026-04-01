@@ -7,7 +7,7 @@
 help:     ## Show this help.
 	@egrep -h '(\s##\s|^##\s)' $(MAKEFILE_LIST) | egrep -v '^--' | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m  %-35s\033[0m %s\n", $$1, $$2}'
 
-build:   ## Build containers.
+build: lock ## Build containers.
 	@echo "${green}Create app${no_color}"
 	docker compose build
 
@@ -38,6 +38,10 @@ status: ## Show current status.
 logs: ## Show logs
 	@echo "${green}Show logs${no_color}"
 	docker compose logs --follow
+
+lock: ## Update uv.lock inside the builder image
+	@echo "${green}Update uv.lock${no_color}"
+	docker run --rm -v $(CURDIR):/app -w /app ghcr.io/astral-sh/uv:python3.12-bookworm-slim uv lock
 
 update: ## Update images
 	@echo "${orange}Update images${no_color}"
