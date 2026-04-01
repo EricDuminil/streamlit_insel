@@ -292,11 +292,11 @@ wheels = [
 
 [[package]]
 name = "insel"
-version = "0.0.9"
+version = "0.1.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0b/6c/53b5a1015a3f604b3472b9d7222fe99a3034ad361e40cdcbdd33ccb69dc4/insel-0.0.9.tar.gz", hash = "sha256:1d04c193866dcd128d42cd82e61fc151afd962341cd0e951c34edcb2e84f511f", size = 829324, upload-time = "2026-01-23T08:41:39.524Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a9/d1/631cc05aee9bb8dc9a39d15e5b7a18063bcc46f8aef6b760a1b81d622457/insel-0.1.0.tar.gz", hash = "sha256:d59cb2c9bbd5547419beac8bae8de47c8217bc003bca75733a914ae0eab1f6b6", size = 832392, upload-time = "2026-03-17T08:17:37.007Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/90/79/45ec7d24fa74c5cfe5db4d111f076e0f181560e737de29ea3f5ed336ae43/insel-0.0.9-py3-none-any.whl", hash = "sha256:95ca6002cf0c4c2c3951876b49e5a50d1f5a8232f53e0461a47dacfd596f0ee7", size = 884598, upload-time = "2026-01-23T08:41:36.252Z" },
+    { url = "https://files.pythonhosted.org/packages/76/f1/3e3c95d0bfb0c2c41796435fd4388acbe0df257dcf37bcf457dad686b641/insel-0.1.0-py3-none-any.whl", hash = "sha256:2cb3a213182396cc6d787b2ac6f9e75855469234c1486ae63eed3e8ef7552770", size = 889835, upload-time = "2026-03-17T08:17:35.404Z" },
 ]
 
 [[package]]
@@ -1067,7 +1067,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "insel", specifier = ">=0.0.9" },
+    { name = "insel", specifier = ">=0.1.0" },
     { name = "streamlit", extras = ["charts"], specifier = ">=1.52.1" },
 ]
 

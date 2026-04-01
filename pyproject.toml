@@ -5,6 +5,6 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "insel>=0.0.9",
+    "insel>=0.1.0",
     "streamlit[charts]>=1.52.1",
 ]
