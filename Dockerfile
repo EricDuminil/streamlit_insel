@@ -27,7 +27,7 @@ FROM python:3.12-slim-bookworm
 ########################
 #  INSEL, without GUI  #
 ########################
-ARG INSEL_VERSION=8.3.3.1b
+ARG INSEL_VERSION=8.3.3.9b
 ARG DEBIAN_FRONTEND=noninteractive
 
 ARG INSEL_DEB="insel_${INSEL_VERSION}_x64_mini.deb"
