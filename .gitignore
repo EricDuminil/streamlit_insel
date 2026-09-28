@@ -9,3 +9,4 @@ wheels/
 # Virtual environments
 .venv
 compose.override.yaml
+/templates/Last_PV_Batterie.png
